@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Color palette and design showcase by Ugur Toprakdeviren">
+    <title>Polished UI Showcase - Ugur Toprakdeviren</title>
+    <meta name="description"
+        content="Polished UI Showcase: A collection of daily frontend components and design experiments by Uğur Toprakdeviren, featuring interactive UIs, CSS animations, and modern web aesthetics.">
+    <meta name="keywords"
+        content="UI components, frontend showcase, CSS animations, interactive UI, web design, UI/UX, daily UI, Uğur Toprakdeviren, polished UI, CSS art, frontend development, HTML, CSS">
+    <meta name="author" content="Uğur Toprakdeviren">
+    <link rel="author" href="https://github.com/toprakdeviren">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toprakdeviren.github.io/polished-ui-showcase/">
+    <meta property="og:title" content="Polished UI Showcase - Developed By | Uğur Toprakdeviren">
+    <meta property="og:description"
+        content="Explore a daily collection of meticulously crafted UI components and frontend experiments by Uğur Toprakdeviren. Dive into modern web design and CSS artistry.">
+
+    <meta property="og:image" content="https://toprakdeviren.github.io/polished-ui-showcase/showcase-preview.png">
+    <meta property="og:image:alt"
+        content="A preview of Uğur Toprakdeviren's Polished UI Showcase, featuring a collection of frontend components.">
+    <meta property="og:site_name" content="Polished UI Showcase by Uğur Toprakdeviren">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://toprakdeviren.github.io/polished-ui-showcase/">
+    <meta name="twitter:title" content="Polished UI Showcase - Developed By | Uğur Toprakdeviren">
+    <meta name="twitter:description"
+        content="A daily journey into crafting polished UI components and exploring frontend design. By Uğur Toprakdeviren.">
+
+    <meta property="twitter:image" content="https://toprakdeviren.github.io/polished-ui-showcase/showcase-preview.png">
+    <meta name="twitter:image:alt"
+        content="Uğur Toprakdeviren's Polished UI Showcase: Daily frontend components and design experiments.">
+    <meta name="twitter:creator" content="@toprakdevos">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        html {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #080A1C;
+            background-image:
+                radial-gradient(ellipse at 2% 3%, hsla(230, 90%, 60%, 0.28) 0px, transparent 50%),
+                radial-gradient(ellipse at 98% 5%, hsla(290, 80%, 55%, 0.32) 0px, transparent 50%),
+                radial-gradient(ellipse at 50% 99%, hsla(190, 85%, 50%, 0.38) 0px, transparent 50%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            color: #E8E8E8;
+            padding: 50px 20px;
+            overflow: hidden;
+        }
+
+        .browser-window {
+            width: 90%;
+            max-width: 1050px;
+            aspect-ratio: 17 / 10;
+            background-color: rgba(26, 28, 56, 0.5);
+            backdrop-filter: blur(40px) saturate(190%);
+            -webkit-backdrop-filter: blur(40px) saturate(190%);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow:
+                0 0 0 1.5px rgba(255, 255, 255, 0.07) inset,
+                0 70px 140px -30px rgba(0, 0, 0, 0.5),
+                0 40px 80px -40px rgba(0, 0, 0, 0.6),
+                0 0 150px -20px rgba(120, 80, 220, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.94) translateY(0);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            animation: windowFloat 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes windowFloat {
+            0% {
+                transform: scale(0.94) translateY(0);
+            }
+
+            100% {
+                transform: scale(0.94) translateY(-10px);
+            }
+        }
+
+        .browser-window::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            border-radius: inherit;
+            background: linear-gradient(170deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.0) 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .browser-window::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 5%;
+            right: 5%;
+            height: 20px;
+            background: radial-gradient(ellipse at bottom, rgba(180, 210, 255, 0.15) 0%, transparent 70%);
+            filter: blur(10px);
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: -1;
+            transition: opacity 0.8s ease;
+        }
+
+        .browser-window:hover {
+            transform: scale(1) translateY(0);
+            box-shadow:
+                0 0 0 1.5px rgba(255, 255, 255, 0.1) inset,
+                0 80px 160px -30px rgba(0, 0, 0, 0.35),
+                0 50px 100px -45px rgba(0, 0, 0, 0.45),
+                0 0 200px -20px rgba(150, 120, 255, 0.25);
+            animation-play-state: paused;
+        }
+
+        .browser-window:hover::after {
+            opacity: 1;
+        }
+
+        .browser-header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 22px;
+            background-color: rgba(10, 12, 30, 0.25);
+            height: 64px;
+            flex-shrink: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            z-index: 2;
+        }
+
+        .buttons {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 0.5px solid rgba(0, 0, 0, 0.25);
+            box-shadow: 0 1px 2.5px rgba(0, 0, 0, 0.15), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.15);
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: scale(1.12) translateY(-1px);
+            box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.2);
+            filter: brightness(1.1);
+        }
+
+        .button.red {
+            background: linear-gradient(to bottom, #FF7D75, #FF5F57);
+        }
+
+        .button.yellow {
+            background: linear-gradient(to bottom, #FFCA4E, #FEBC2E);
+        }
+
+        .button.green {
+            background: linear-gradient(to bottom, #4AD95C, #28C840);
+        }
+
+        .address-bar-container {
+            max-width: calc(100% - 180px);
+            min-width: 0;
+            height: 36px;
+            background-color: rgba(0, 0, 0, 0.35);
+            border-radius: 9px;
+            box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .address-bar-container:hover {
+            background-color: rgba(0, 0, 0, 0.45);
+            box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.3), 0 0 15px rgba(120, 80, 220, 0.1);
+        }
+
+        .lock-icon {
+            flex-shrink: 0;
+            color: #9AA6C0;
+            opacity: 0.8;
+            width: 14px;
+            height: 14px;
+        }
+
+        .address-bar-text {
+            font-size: 14px;
+            font-weight: 400;
+            color: #C8D0E0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: 0.1px;
+            flex-grow: 1;
+            min-width: 50px;
+        }
+
+        .social-icons-container {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .social-icon-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #9AA6C0;
+            opacity: 0.8;
+            transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-icon-link:hover {
+            color: #E8E8E8;
+            opacity: 1;
+            transform: scale(1.15) translateY(-2px);
+        }
+
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .browser-content {
+            flex-grow: 1;
+            background-color: transparent;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #F5F5F5;
+            overflow-y: auto;
+            position: relative;
+            z-index: 0;
+        }
+
+        .browser-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(10, 12, 30, 0.15), transparent);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            /* Adjusted bottom margin */
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #E8D0FC, #9EDCFC, #E8D0FC);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 3px 25px rgba(200, 180, 255, 0.35);
+            z-index: 2;
+            position: relative;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% center;
+            }
+
+            100% {
+                background-position: -200% center;
+            }
+        }
+
+        .showcase-slogan {
+            font-size: clamp(18px, 2.5vw, 22px);
+            font-weight: 500;
+            color: #B0B8D0;
+            letter-spacing: 0.3px;
+            margin-bottom: 40px;
+            z-index: 2;
+            position: relative;
+            max-width: 90%;
+        }
+
+        .color-palette-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px 15px;
+            width: 100%;
+            max-width: 520px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .color-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 80px;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInItem 0.6s cubic-bezier(0.25, 0.1, 0.45, 1.4) forwards;
+        }
+
+        @keyframes fadeInItem {
+            0% {
+                opacity: 0;
+                transform: translateY(15px) scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .color-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .color-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .color-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .color-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .color-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .color-item:nth-child(6) {
+            /* If you add more colors */
+            animation-delay: 0.6s;
+        }
+
+
+        .color-swatch {
+            width: 55px;
+            height: 34px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0 0.5px 1px rgba(0, 0, 0, 0.25), 0 3px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1.5), box-shadow 0.25s ease-out;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .color-swatch::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.75s cubic-bezier(0.25, 0.1, 0.25, 1);
+            /* Smoothed transition */
+            opacity: 0;
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: inset 0 0.5px 1px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-swatch:hover::after {
+            left: 150%;
+            opacity: 1;
+        }
+
+        .color-code {
+            font-size: 13px;
+            font-weight: 500;
+            color: #9AA6C0;
+            font-family: 'Inter', monospace;
+            letter-spacing: 0.5px;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 3px 8px;
+            border-radius: 6px;
+            user-select: all;
+            transition: all 0.2s ease;
+        }
+
+        .color-code:hover {
+            background-color: rgba(120, 80, 220, 0.25);
+            color: #E8E8E8;
+            transform: scale(1.05);
+        }
+
+        .color-name {
+            font-size: 11px;
+            color: #7A8195;
+            font-weight: 400;
+        }
+
+        @media (max-width: 900px) {
+            .browser-window {
+                transform: scale(0.95) translateY(0);
+            }
+
+            .address-bar-container {
+                max-width: calc(100% - 160px);
+            }
+
+            @keyframes windowFloat {
+                0% {
+                    transform: scale(0.95) translateY(0);
+                }
+
+                100% {
+                    transform: scale(0.95) translateY(-8px);
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 15px;
+            }
+
+            .browser-window {
+                aspect-ratio: auto;
+                min-height: 550px;
+                border-radius: 18px;
+                transform: scale(0.97) translateY(0);
+            }
+
+            .browser-window::before {
+                background: linear-gradient(170deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 45%);
+            }
+
+            .browser-window::after {
+                display: none;
+            }
+
+            .browser-header {
+                height: 58px;
+                padding: 0 20px;
+            }
+
+            .buttons {
+                left: 20px;
+            }
+
+            .social-icons-container {
+                right: 20px;
+                gap: 6px;
+            }
+
+            .social-icon {
+                width: 14px;
+                height: 14px;
+            }
+
+            .address-bar-container {
+                height: 32px;
+                padding: 0 12px;
+                gap: 8px;
+                max-width: calc(100% - 150px);
+            }
+
+            .lock-icon {
+                width: 13px;
+                height: 13px;
+            }
+
+            .address-bar-text {
+                font-size: 13px;
+                min-width: 40px;
+            }
+
+            .browser-content {
+                padding: 35px 30px;
+            }
+
+            .browser-content::before {
+                height: 25px;
+                opacity: 0.45;
+            }
+
+            h1 {
+                font-size: clamp(30px, 5.5vw, 42px);
+                margin-bottom: 15px;
+                /* Adjusted for mobile */
+            }
+
+            .showcase-slogan {
+                font-size: clamp(17px, 2.2vw, 20px);
+                margin-bottom: 30px;
+                /* Adjusted for mobile */
+            }
+
+            .color-palette-showcase {
+                gap: 15px 10px;
+                max-width: 420px;
+            }
+
+            .color-swatch {
+                width: 48px;
+                height: 30px;
+                border-radius: 6px;
+            }
+
+            .color-item {
+                gap: 8px;
+            }
+
+            .color-name {
+                font-size: 10px;
+            }
+
+
+            @keyframes windowFloat {
+                0% {
+                    transform: scale(0.97) translateY(0);
+                }
+
+                100% {
+                    transform: scale(0.97) translateY(-5px);
+                }
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 25px 10px;
+            }
+
+            .browser-window {
+                transform: none;
+                border-radius: 16px;
+                min-height: 480px;
+                animation: none;
+            }
+
+            .browser-window::before {
+                display: none;
+            }
+
+            .browser-header {
+                height: 50px;
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .buttons {
+                left: 15px;
+                gap: 8px;
+            }
+
+            .button {
+                width: 13px;
+                height: 13px;
+            }
+
+            .address-bar-container {
+                display: none;
+            }
+
+            .social-icons-container {
+                right: 15px;
+            }
+
+            .social-icon {
+                width: 13px;
+                height: 13px;
+            }
+
+            .browser-content {
+                padding: 30px 20px;
+            }
+
+            .browser-content::before {
+                display: none;
+            }
+
+            h1 {
+                font-size: clamp(28px, 7vw, 36px);
+                margin-bottom: 12px;
+            }
+
+            .showcase-slogan {
+                font-size: clamp(16px, 3vw, 18px);
+                margin-bottom: 25px;
+            }
+
+            .color-palette-showcase {
+                gap: 12px 8px;
+            }
+
+            .color-item {
+                min-width: 65px;
+                gap: 6px;
+            }
+
+            .color-swatch {
+                width: 42px;
+                height: 27px;
+                border-radius: 5px;
+            }
+
+            .color-code {
+                font-size: 11px;
+                padding: 2px 5px;
+            }
+
+            .color-name {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="browser-window">
+        <div class="browser-header">
+            <div class="buttons">
+                <span class="button red" title="Close"></span>
+                <span class="button yellow" title="Minimize"></span>
+                <span class="button green" title="Maximize"></span>
+            </div>
+            <div class="address-bar-container">
+                <svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3V18a3 3 0 003 3h10.5a3 3 0 003-3v-5.25a3 3 0 00-3-3v-3A5.25 5.25 0 0012 1.5zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z"
+                        clip-rule="evenodd" />
+                </svg>
+                <span class="address-bar-text">https://toprakdeviren.github.io/</span>
+            </div>
+            <div class="social-icons-container">
+                <a href="https://x.com/@toprakdevos" target="_blank" rel="noopener noreferrer"
+                    title="My X (Twitter) Profile" class="social-icon-link">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.257 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+                <a href="https://github.com/toprakdeviren" target="_blank" rel="noopener noreferrer"
+                    title="My GitHub Profile" class="social-icon-link">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="browser-content">
+            <h1>Core Hues.</h1>
+            <p class="showcase-slogan">Pixel-Perfect Product Showcase</p>
+            <div class="color-palette-showcase">
+                <div class="color-item">
+                    <span class="color-swatch" style="background-color: #080A1C;" title="Deep Space (#080A1C)"></span>
+                    <span class="color-code">#080A1C</span>
+                    <span class="color-name">Deep Space</span>
+                </div>
+                <div class="color-item">
+                    <span class="color-swatch" style="background-color: #1A1C38;" title="Panel Base (#1A1C38)"></span>
+                    <span class="color-code">#1A1C38</span>
+                    <span class="color-name">Panel Base</span>
+                </div>
+                <div class="color-item">
+                    <span class="color-swatch" style="background-color: #E8D0FC;"
+                        title="Amethyst Mist (#E8D0FC)"></span>
+                    <span class="color-code">#E8D0FC</span>
+                    <span class="color-name">Amethyst</span>
+                </div>
+                <div class="color-item">
+                    <span class="color-swatch" style="background-color: #9EDCFC;" title="Cyber Frost (#9EDCFC)"></span>
+                    <span class="color-code">#9EDCFC</span>
+                    <span class="color-name">Cyber Frost</span>
+                </div>
+                <div class="color-item">
+                    <span class="color-swatch" style="background-color: #7850DC;"
+                        title="Nebula Violet (#7850DC)"></span>
+                    <span class="color-code">#7850DC</span>
+                    <span class="color-name">Nebula</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
