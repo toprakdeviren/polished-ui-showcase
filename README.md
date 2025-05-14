@@ -28,8 +28,6 @@ The initial component in this series is a sleek, glassmorphic browser window moc
 Experience the live version of the current component here:
 **[https://toprakdeviren.github.io/polished-ui-showcase/](https://toprakdeviren.github.io/polished-ui-showcase/)**
 
-*(Replace `YOUR-REPOSITORY-NAME` with the actual name of your repository)*
-
 ## 🛠️ Built With
 
 *   **HTML5**
